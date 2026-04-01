@@ -39,11 +39,6 @@ npm run dev
 - Seeded properties: Nepal locations + prices (NPR)
 - Property image used for all listings: `client/public/image.png` (served as `/image.png`)
 
-## Env (optional)
-- `PORT` (default `3001`)
-- `JWT_SECRET` (defaults to a dev-only value)
-- `DB_PATH` (default `data/db.json` relative to `server/`)
-
 ## Routes (web)
 - Public: `/login`, `/register`
 - App (after login): `/app/home`, `/app/properties`, `/app/favourites`, `/app/about`, `/app/profile`
