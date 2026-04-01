@@ -10,7 +10,7 @@ Minimal full-stack app for a real-estate buyer portal: email/password auth + per
 1) Install backend deps
 ```bash
 cd server
-npm install 
+npm install
 ```
 
 2) Install frontend deps
@@ -32,10 +32,22 @@ npm run dev
 ```
 
 - API: `http://localhost:3001`
-- Web: `http://localhost:5173` 
+- Web: `http://localhost:5173` (proxies `/api` to the backend)
 
+## Data
+- DB file (auto-created): `server/data/db.json`
+- Seeded properties: Nepal locations + prices (NPR)
+- Property image used for all listings: `client/public/image.png` (served as `/image.png`)
 
+## Env (optional)
+- `PORT` (default `3001`)
+- `JWT_SECRET` (defaults to a dev-only value)
+- `DB_PATH` (default `data/db.json` relative to `server/`)
 
+## Routes (web)
+- Public: `/login`, `/register`
+- App (after login): `/app/home`, `/app/properties`, `/app/favourites`, `/app/about`, `/app/profile`
+- UI: tap the heart icon to add/remove favourites (heart turns red when saved)
 
 ## Example flow
 1) Register a user (web):
@@ -43,9 +55,9 @@ npm run dev
 2) Login:
    - Go to `/login`, enter email/password
 3) Add favourites:
-   - On Dashboard, click **Add to favourites** on a property
+   - Go to **All properties** and tap the heart icon
 4) Remove favourites:
-   - Click **Remove** in “My Favourites”
+   - Go to **Favourites** tab and tap the heart icon again
 
 ## API (quick)
 - `POST /api/auth/register` `{ name, email, password }`
@@ -55,3 +67,10 @@ npm run dev
 - `GET /api/favourites` (auth)
 - `POST /api/favourites` `{ propertyId }` (auth)
 - `DELETE /api/favourites/:propertyId` (auth)
+
+## Reset the seed data
+If you want to reset the DB (users + favourites + seeded properties):
+```bash
+rm -f server/data/db.json
+```
+Then restart the backend.
